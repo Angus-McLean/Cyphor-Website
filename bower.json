@@ -1,0 +1,29 @@
+{
+  "name": "Cyphor-Website",
+  "homepage": "https://github.com/Angus-McLean/Cyphor-Website",
+  "description": "Cyphor Website",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "encryption",
+    "cyphor"
+  ],
+  "authors": [
+    "angus@cyphor.io"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "magnific-popup": "^1.1.0",
+    "jquery-easing-original": "^1.3.2",
+    "font-awesome": "fontawesome#^4.6.2"
+  }
+}
