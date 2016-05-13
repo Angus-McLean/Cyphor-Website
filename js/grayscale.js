@@ -77,6 +77,7 @@ $('#subscribeform').submit(function(e) {
 
 				console.log(data);
 				$('#subscribe-btn > span')[0].innerText =  " THANK YOU!";
+				$('#subscribeform').reset();
 				setTimeout(function () {
 					$('#subscribe-btn > span')[0].innerText =  " SUBSCRIBE";
 				}, 5000);
@@ -98,6 +99,7 @@ $('#contactform').submit(function(e) {
 		$.post('/forms/contact', $('#contactform').serialize(), function(data) {
 				console.log(data);
 				$('#contact-btn > span')[0].innerText =  " THANK YOU!";
+				$('#contactform').reset();
 				setTimeout(function () {
 					$('#contact-btn > span')[0].innerText =  " SUBMIT";
 				}, 5000);
