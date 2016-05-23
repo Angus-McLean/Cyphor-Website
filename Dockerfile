@@ -1,0 +1,17 @@
+# Set nginx base image
+FROM nginx
+
+# Install nodejs and bower
+RUN apt-get update
+RUN apt-get install -y nodejs npm git
+RUN npm -y install bower -g
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+# Copy custom configuration file from the current directory
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Make directory and copy static contents
+RUN mkdir -p /Cyphor/Cyphor-Website
+COPY . /Cyphor/Cyphor-Website/
+
+RUN cd /Cyphor/Cyphor-Website && bower install --allow-root
