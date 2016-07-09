@@ -308,6 +308,25 @@ a:focus {
     margin-top: 100px;
 }
 
+.sample-message {
+  text-align: center;
+}
+
+.sample-message:hover > .encrypted {
+  margin: auto;
+  display:inline;
+}
+
+.sample-message:hover > .decrypted {
+  margin: auto;
+  display:none;
+}
+
+.encrypted {
+  display: none;
+}
+
+
 @media(min-width:767px) {
     .content-section {
         padding-top: 250px;
@@ -321,6 +340,11 @@ a:focus {
         height: 400px;
         margin-top: 250px;
     }
+}
+
+.col-center {
+    float: none;
+    margin: 0 auto;
 }
 
 .btn {
