@@ -310,6 +310,7 @@ a:focus {
 
 .sample-message {
   text-align: center;
+  cursor: pointer;
 }
 
 .sample-message:hover > .encrypted {
