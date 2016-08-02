@@ -67,6 +67,12 @@ a:focus {
     color: #42dca3;
 }
 
+ol > li {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	font-size: 15px;
+}
+
 .light {
     font-weight: 400;
 }
