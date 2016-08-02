@@ -64,11 +64,24 @@ a {
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #1d9b6c;
+    color: #42dca3;
 }
 
 .light {
     font-weight: 400;
+}
+
+#background-logo {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -300px -300px
+}
+
+#background-logo > img {
+	width: 600px;
+	height: 600px;
+	opacity: 0.1;
 }
 
 .navbar-custom {
