@@ -25,9 +25,10 @@ $(function() {
 });
 
 // check if already signed in
-$.get('/users/me', function (resp) {
-	$('#displayname').text(resp.email.match(/(.+)@/)[1]);
-	$('#email').text(resp.email);
+$.get('/users/me', function (data) {
+	if(!data) return;
+	$('#displayname').text(data.email.match(/(.+)@/)[1]);
+	$('#email').text(data.email);
 	$('#row-signin').css('display','none');
 	$('#row-download').css('display','');
 });
@@ -46,8 +47,8 @@ $('#alphasignin').submit(function(e) {
 				// successful login
 				console.log(data);
 
-				$('#displayname').text(resp.email.match(/(.+)@/)[1]);
-				$('#email').text(resp.email);
+				$('#displayname').text(data.email.match(/(.+)@/)[1]);
+				$('#email').text(data.email);
 				$('#row-signin').css('display','none');
 				$('#row-download').css('display','');
 
@@ -65,17 +66,17 @@ $('#alphasignin').submit(function(e) {
 
 function handleChromeInstallation () {
 	console.log('triggered');
-	var url = 'https://chrome.google.com/webstore/detail/oiahaghleeahnipdomfflikocpomnpnh';
+	var url = config.chrome_ext_url;
 	chrome.webstore.install(url, function () {
 		// redirect user to how to page
 		//window.location = '/how_to';
-		$('#download-errors').text('Thank you for installing Cyphor! We look forward to hearing your feedback.');
+		$('#download-errors').html('Thank you for installing Cyphor! We look forward to hearing your feedback at <a href="mailto:'+config.alpha_feedback_email+'"></a>');
 		console.log('successful extension install');
 	}, function (e) {
 		// chrome installation failed.. possibly be cause they're not signed in in the browser
-		//window.location = '/failed_install';
-		$('#download-errors').text('Looks like there was a problem. Are you sure you\'re signed in to your Chrome Browser? \n Checkout "Trouble Installing?" below.');
-		$('#download-errors').html($('#download-errors').html().replace(/\n/g,'<br/>'));
+
+		//$('#download-errors').text('Looks like there was a problem. Are you sure you\'re signed in to your Chrome Browser? \n Checkout "Trouble Installing?" below.');
+		//$('#download-errors').html($('#download-errors').html().replace(/\n/g,'<br/>'));
 		console.error('failed extension install', e);
 	});
 }
