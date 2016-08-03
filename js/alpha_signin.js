@@ -4,6 +4,8 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+var config = {};
+
 // jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
 	if ($(".navbar").offset().top > 50) {
@@ -31,6 +33,7 @@ $.get('/users/me', function (data) {
 	$('#email').text(data.email);
 	$('#row-signin').css('display','none');
 	$('#row-download').css('display','');
+	getChromeLink();
 });
 
 ////// Form submissions //////
@@ -47,11 +50,10 @@ $('#alphasignin').submit(function(e) {
 				// successful login
 				console.log(data);
 
-				$('#displayname').text(data.email.match(/(.+)@/)[1]);
 				$('#email').text(data.email);
 				$('#row-signin').css('display','none');
 				$('#row-download').css('display','');
-
+				getChromeLink();
 			}
 		).fail(function (e) {
 			console.error(e);
@@ -64,13 +66,23 @@ $('#alphasignin').submit(function(e) {
 	return false;
 });
 
+function getChromeLink() {
+	$.get('/alpha/config', function (data) {
+		config.extension_url = data.extension_url;
+		var link = document.createElement('link');
+		link.rel = 'chrome-webstore-item';
+		link.href = data.extension_url;
+		document.head.appendChild(link);
+	});
+}
+
 function handleChromeInstallation () {
 	console.log('triggered');
 	var url = config.chrome_ext_url;
 	chrome.webstore.install(url, function () {
 		// redirect user to how to page
 		//window.location = '/how_to';
-		$('#download-errors').html('Thank you for installing Cyphor! We look forward to hearing your feedback at <a href="mailto:'+config.alpha_feedback_email+'"></a>');
+		$('#download-errors').html('Thank you for installing Cyphor! We look forward to hearing your feedback at <a href="mailto:support@cyphor.io">support@cyphor.io</a>');
 		console.log('successful extension install');
 	}, function (e) {
 		// chrome installation failed.. possibly be cause they're not signed in in the browser
