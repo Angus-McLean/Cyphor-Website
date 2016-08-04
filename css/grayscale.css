@@ -73,8 +73,18 @@ ol > li {
 	font-size: 15px;
 }
 
+.howtosteps > li {
+	padding-left: 15px;
+	padding-bottom: 10px;
+	font-size: 18px;
+}
+
 .light {
     font-weight: 400;
+}
+
+.top-buffer {
+	margin-top:20px;
 }
 
 #background-logo {
@@ -454,4 +464,10 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
+}
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
 }

@@ -34,7 +34,7 @@ $('#alpha_invite').submit(function(e) {
 	e.preventDefault();
 	var nofill_val = $('input[name=subscribenofill]').val();
 	if(nofill_val == ''){
-		$.post('/auth/invite', $('#alpha_invite').serialize(), function(data) {
+		$.post('/alpha/invite', $('#alpha_invite').serialize(), function(data) {
 				// successful login
 				console.log(data);
 				$('#error-message').html('Great your friend is signed up! <br/> Don\'t forget to send them their invite token.');
